@@ -39,9 +39,15 @@ class AddFlowerActivity : AppCompatActivity() {
         findViewById<Button>(R.id.done_button).setOnClickListener {
             addFlower()
         }
+
+
+
         addFlowerName = findViewById(R.id.add_flower_name)
         addFlowerDescription = findViewById(R.id.add_flower_description)
     }
+
+
+
 
     /* The onClick action for the done button. Closes the activity and returns the new flower name
     and description as part of the intent. If the name or description are missing, the result is set
@@ -64,7 +70,5 @@ class AddFlowerActivity : AppCompatActivity() {
 
 
 
-    fun getAllResults(view: View) {
-        
-    }
+
 }

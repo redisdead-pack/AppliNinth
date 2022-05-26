@@ -16,23 +16,12 @@
 
 package com.example.recyclersample.data
 
-import android.content.res.Resources
-import com.example.recyclersample.R
+import androidx.annotation.DrawableRes
 
-/* Returns initial list of Armies. */
-fun ArmyList(resources: Resources): List<Army> {
-    val armies: MutableList<Army> = mutableListOf()
-    var id = 1L
-    for (armyName in resources.getStringArray(R.array.armies)) {
-        armies.add(
-            Army(
-                id,
-                armyName,
-                R.drawable.rose,
-                resources.getString(R.string.flower1_description)
-            )
-        )
-        id += 1;
-    }
-    return armies;
-}
+data class Army(
+    val id: Long,
+    val name: String,
+    @DrawableRes
+    val image: Int?,
+    val description: String
+)

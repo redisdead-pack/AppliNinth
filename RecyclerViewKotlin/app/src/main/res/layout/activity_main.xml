@@ -23,7 +23,7 @@
         android:layout_height="0dp"
         android:layout_marginBottom="16dp"
         app:layoutManager="LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/btn_click_me"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="-95dp" />
 
@@ -38,11 +38,10 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_click_me"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:onClick="getAllResults"
         android:text="Validate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

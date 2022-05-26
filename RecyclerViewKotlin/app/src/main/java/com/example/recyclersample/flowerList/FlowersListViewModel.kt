@@ -20,12 +20,12 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.recyclersample.data.DataSource
-import com.example.recyclersample.data.Flower
+import com.example.recyclersample.data.Army
 import kotlin.random.Random
 
 class FlowersListViewModel(val dataSource: DataSource) : ViewModel() {
 
-    val flowersLiveData = dataSource.getFlowerList()
+    val flowersLiveData = dataSource.getArmyList()
 
     /* If the name and description are present, create new Flower and add it to the datasource */
     fun insertFlower(flowerName: String?, flowerDescription: String?) {
@@ -34,14 +34,14 @@ class FlowersListViewModel(val dataSource: DataSource) : ViewModel() {
         }
 
         val image = dataSource.getRandomFlowerImageAsset()
-        val newFlower = Flower(
+        val newArmy = Army(
             Random.nextLong(),
             flowerName,
             image,
             flowerDescription
         )
 
-        dataSource.addFlower(newFlower)
+        dataSource.addArmy(newArmy)
     }
 }
 

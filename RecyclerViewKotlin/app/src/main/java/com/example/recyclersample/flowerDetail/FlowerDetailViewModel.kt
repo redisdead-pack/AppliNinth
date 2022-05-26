@@ -20,18 +20,18 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.recyclersample.data.DataSource
-import com.example.recyclersample.data.Flower
+import com.example.recyclersample.data.Army
 
 class FlowerDetailViewModel(private val datasource: DataSource) : ViewModel() {
 
     /* Queries datasource to returns a flower that corresponds to an id. */
-    fun getFlowerForId(id: Long) : Flower? {
+    fun getFlowerForId(id: Long) : Army? {
         return datasource.getFlowerForId(id)
     }
 
     /* Queries datasource to remove a flower. */
-    fun removeFlower(flower: Flower) {
-        datasource.removeFlower(flower)
+    fun removeFlower(army: Army) {
+        datasource.removeArmy(army)
     }
 }
 

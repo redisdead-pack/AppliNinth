@@ -18,18 +18,20 @@ package com.example.recyclersample.flowerList
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.recyclersample.addFlower.AddFlowerActivity
-import com.example.recyclersample.flowerDetail.FlowerDetailActivity
 import com.example.recyclersample.R
+import com.example.recyclersample.addFlower.AddFlowerActivity
 import com.example.recyclersample.addFlower.FLOWER_DESCRIPTION
 import com.example.recyclersample.addFlower.FLOWER_NAME
-import com.example.recyclersample.data.Flower
+import com.example.recyclersample.data.Army
+import com.example.recyclersample.flowerDetail.FlowerDetailActivity
+
 
 const val FLOWER_ID = "flower id"
 
@@ -54,7 +56,7 @@ class FlowersListActivity : AppCompatActivity() {
 
         flowersListViewModel.flowersLiveData.observe(this, {
             it?.let {
-                flowersAdapter.submitList(it as MutableList<Flower>)
+                flowersAdapter.submitList(it as MutableList<Army>)
                 headerAdapter.updateFlowerCount(it.size)
             }
         })
@@ -63,12 +65,21 @@ class FlowersListActivity : AppCompatActivity() {
         fab.setOnClickListener {
             fabOnClick()
         }
+
+        // get reference to button
+        val btn_click_me = findViewById<Button>(R.id.btn_click_me)
+        // set on-click listener
+        btn_click_me.setOnClickListener {
+
+        }
     }
 
+
+
     /* Opens FlowerDetailActivity when RecyclerView item is clicked. */
-    private fun adapterOnClick(flower: Flower) {
+    private fun adapterOnClick(army: Army) {
         val intent = Intent(this, FlowerDetailActivity()::class.java)
-        intent.putExtra(FLOWER_ID, flower.id)
+        intent.putExtra(FLOWER_ID, army.id)
         startActivity(intent)
     }
 

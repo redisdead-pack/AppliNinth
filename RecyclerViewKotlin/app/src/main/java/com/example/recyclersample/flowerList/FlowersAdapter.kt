@@ -25,33 +25,33 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recyclersample.R
-import com.example.recyclersample.data.Flower
+import com.example.recyclersample.data.Army
 
-class FlowersAdapter(private val onClick: (Flower) -> Unit) :
-    ListAdapter<Flower, FlowersAdapter.FlowerViewHolder>(FlowerDiffCallback) {
+class FlowersAdapter(private val onClick: (Army) -> Unit) :
+    ListAdapter<Army, FlowersAdapter.FlowerViewHolder>(FlowerDiffCallback) {
 
     /* ViewHolder for Flower, takes in the inflated view and the onClick behavior. */
-    class FlowerViewHolder(itemView: View, val onClick: (Flower) -> Unit) :
+    class FlowerViewHolder(itemView: View, val onClick: (Army) -> Unit) :
         RecyclerView.ViewHolder(itemView) {
         private val flowerTextView: TextView = itemView.findViewById(R.id.flower_text)
         private val flowerImageView: ImageView = itemView.findViewById(R.id.flower_image)
-        private var currentFlower: Flower? = null
+        private var currentArmy: Army? = null
 
         init {
             itemView.setOnClickListener {
-                currentFlower?.let {
+                currentArmy?.let {
                     onClick(it)
                 }
             }
         }
 
-        /* Bind flower name and image. */
-        fun bind(flower: Flower) {
-            currentFlower = flower
+        /* Bind army name and image. */
+        fun bind(army: Army) {
+            currentArmy = army
 
-            flowerTextView.text = flower.name
-            if (flower.image != null) {
-                flowerImageView.setImageResource(flower.image)
+            flowerTextView.text = army.name
+            if (army.image != null) {
+                flowerImageView.setImageResource(army.image)
             } else {
                 flowerImageView.setImageResource(R.drawable.rose)
             }
@@ -73,12 +73,12 @@ class FlowersAdapter(private val onClick: (Flower) -> Unit) :
     }
 }
 
-object FlowerDiffCallback : DiffUtil.ItemCallback<Flower>() {
-    override fun areItemsTheSame(oldItem: Flower, newItem: Flower): Boolean {
+object FlowerDiffCallback : DiffUtil.ItemCallback<Army>() {
+    override fun areItemsTheSame(oldItem: Army, newItem: Army): Boolean {
         return oldItem == newItem
     }
 
-    override fun areContentsTheSame(oldItem: Flower, newItem: Flower): Boolean {
+    override fun areContentsTheSame(oldItem: Army, newItem: Army): Boolean {
         return oldItem.id == newItem.id
     }
 }

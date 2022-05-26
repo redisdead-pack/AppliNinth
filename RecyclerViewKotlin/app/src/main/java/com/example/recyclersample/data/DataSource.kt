@@ -22,47 +22,47 @@ import androidx.lifecycle.MutableLiveData
 
 /* Handles operations on flowersLiveData and holds details about it. */
 class DataSource(resources: Resources) {
-    private val initialFlowerList = flowerList(resources)
-    private val flowersLiveData = MutableLiveData(initialFlowerList)
+    private val initialArmyList = ArmyList(resources)
+    private val armiesLiveData = MutableLiveData(initialArmyList)
 
     /* Adds flower to liveData and posts value. */
-    fun addFlower(flower: Flower) {
-        val currentList = flowersLiveData.value
+    fun addArmy(army: Army) {
+        val currentList = armiesLiveData.value
         if (currentList == null) {
-            flowersLiveData.postValue(listOf(flower))
+            armiesLiveData.postValue(listOf(army))
         } else {
             val updatedList = currentList.toMutableList()
-            updatedList.add(0, flower)
-            flowersLiveData.postValue(updatedList)
+            updatedList.add(0, army)
+            armiesLiveData.postValue(updatedList)
         }
     }
 
     /* Removes flower from liveData and posts value. */
-    fun removeFlower(flower: Flower) {
-        val currentList = flowersLiveData.value
+    fun removeArmy(army: Army) {
+        val currentList = armiesLiveData.value
         if (currentList != null) {
             val updatedList = currentList.toMutableList()
-            updatedList.remove(flower)
-            flowersLiveData.postValue(updatedList)
+            updatedList.remove(army)
+            armiesLiveData.postValue(updatedList)
         }
     }
 
     /* Returns flower given an ID. */
-    fun getFlowerForId(id: Long): Flower? {
-        flowersLiveData.value?.let { flowers ->
+    fun getFlowerForId(id: Long): Army? {
+        armiesLiveData.value?.let { flowers ->
             return flowers.firstOrNull{ it.id == id}
         }
         return null
     }
 
-    fun getFlowerList(): LiveData<List<Flower>> {
-        return flowersLiveData
+    fun getArmyList(): LiveData<List<Army>> {
+        return armiesLiveData
     }
 
     /* Returns a random flower asset for flowers that are added. */
     fun getRandomFlowerImageAsset(): Int? {
-        val randomNumber = (initialFlowerList.indices).random()
-        return initialFlowerList[randomNumber].image
+        val randomNumber = (initialArmyList.indices).random()
+        return initialArmyList[randomNumber].image
     }
 
     companion object {
