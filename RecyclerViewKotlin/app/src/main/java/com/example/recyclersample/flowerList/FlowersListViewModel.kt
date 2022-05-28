@@ -38,7 +38,10 @@ class FlowersListViewModel(val dataSource: DataSource) : ViewModel() {
             Random.nextLong(),
             flowerName,
             image,
-            flowerDescription
+            flowerDescription,
+            false,
+            false,
+            false,
         )
 
         dataSource.addArmy(newArmy)

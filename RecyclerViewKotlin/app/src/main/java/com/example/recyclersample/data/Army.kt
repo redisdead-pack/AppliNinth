@@ -23,5 +23,8 @@ data class Army(
     val name: String,
     @DrawableRes
     val image: Int?,
-    val description: String
+    val description: String,
+    var plus: Boolean,
+    var equal: Boolean,
+    var minus: Boolean,
 )

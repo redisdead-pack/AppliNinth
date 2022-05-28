@@ -26,6 +26,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recyclersample.R
 import com.example.recyclersample.data.Army
+import kotlinx.android.synthetic.main.army_item.view.*
+
 
 class FlowersAdapter(private val onClick: (Army) -> Unit) :
     ListAdapter<Army, FlowersAdapter.FlowerViewHolder>(FlowerDiffCallback) {
@@ -38,6 +40,13 @@ class FlowersAdapter(private val onClick: (Army) -> Unit) :
         private var currentArmy: Army? = null
 
         init {
+            itemView.checkBoxPlus.setOnClickListener{
+                currentArmy?.let {
+                    (it).plus = itemView.checkBoxPlus.isChecked
+                    (it).minus = itemView.checkBoxMinus.isChecked
+                    (it).equal = itemView.checkBoxEqual.isChecked
+                }
+            }
             itemView.setOnClickListener {
                 currentArmy?.let {
                     onClick(it)
@@ -61,7 +70,7 @@ class FlowersAdapter(private val onClick: (Army) -> Unit) :
     /* Creates and inflates view and return FlowerViewHolder. */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FlowerViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.flower_item, parent, false)
+            .inflate(R.layout.army_item, parent, false)
         return FlowerViewHolder(view, onClick)
     }
 

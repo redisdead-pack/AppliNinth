@@ -29,7 +29,10 @@ fun ArmyList(resources: Resources): List<Army> {
                 id,
                 armyName,
                 R.drawable.rose,
-                resources.getString(R.string.flower1_description)
+                resources.getString(R.string.flower1_description),
+                false,
+                false,
+                false
             )
         )
         id += 1;

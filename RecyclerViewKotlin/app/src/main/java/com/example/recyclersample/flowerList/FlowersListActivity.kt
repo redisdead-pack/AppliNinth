@@ -47,17 +47,15 @@ class FlowersListActivity : AppCompatActivity() {
 
         /* Instantiates headerAdapter and flowersAdapter. Both adapters are added to concatAdapter.
         which displays the contents sequentially */
-        val headerAdapter = HeaderAdapter()
+
         val flowersAdapter = FlowersAdapter { flower -> adapterOnClick(flower) }
-        val concatAdapter = ConcatAdapter(headerAdapter, flowersAdapter)
 
         val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
-        recyclerView.adapter = concatAdapter
+        recyclerView.adapter = flowersAdapter
 
         flowersListViewModel.flowersLiveData.observe(this, {
             it?.let {
                 flowersAdapter.submitList(it as MutableList<Army>)
-                headerAdapter.updateFlowerCount(it.size)
             }
         })
 
@@ -70,10 +68,13 @@ class FlowersListActivity : AppCompatActivity() {
         val btn_click_me = findViewById<Button>(R.id.btn_click_me)
         // set on-click listener
         btn_click_me.setOnClickListener {
-
+            validateOnClick()
         }
     }
 
+    private fun validateOnClick() {
+        flowersListViewModel.flowersLiveData
+    }
 
 
     /* Opens FlowerDetailActivity when RecyclerView item is clicked. */
